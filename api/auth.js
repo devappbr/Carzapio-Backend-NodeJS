@@ -11,7 +11,7 @@ module.exports = app => {
             })
         }
 
-        const user = await app.db('test')
+        const user = await app.db('user')
             .where({ cpf: req.body.cpf })
             .first()
 

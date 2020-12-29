@@ -3,9 +3,9 @@
 module.exports = {
     client: 'mysql',
     connection: {
-      host : 'instance-selfood.clxblqyh8cpv.us-east-2.rds.amazonaws.com',
-      user : 'dba',
-      password : 'kdelnx99',
-      database : 'dbSelfood'
+      host : 'mysqlserverdev.cwq9qv9m4vhn.sa-east-1.rds.amazonaws.com',
+      user : 'admin',
+      password : 'Kdelnx99',
+      database : 'dbcarzapio'
     }
   }
