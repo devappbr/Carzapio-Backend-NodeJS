@@ -11,7 +11,7 @@ module.exports = app => {
             .then(stores => res.json(stores))
             .catch(err => res.status(500).json({
                 status: 500,
-                success: false,
+                success: false, 
                 msg: err.sqlMessage
             }))
     }

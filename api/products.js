@@ -54,7 +54,7 @@ module.exports = app => {
             .then(_ => res.status(200).json({
                 status: 200,
                 success: true,
-                msg: 'Store salva com sucesso!'
+                msg: 'Produto salvo com sucesso!'
             }))
             .catch(err => res.status(400).json({
                 status: 404,
