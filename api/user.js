@@ -11,7 +11,7 @@ module.exports = app => {
         obterHash(req.body.password, hash => {
             const password = hash
 
-            app.db('test')
+            app.db('users')
                 .insert({ name: req.body.name, pass: password, cpf: req.body.cpf, email: req.body.email })
                 .then(_ => res.status(204).send())
                 .catch(err => res.status(400).json(err))
@@ -19,22 +19,22 @@ module.exports = app => {
     }
 
     const get = (req, res) => {
-        app.db('test')
+        app.db('users')
             .orderBy('name')
-            .then(test => res.json(test))
+            .then(users => res.json(users))
             .catch(err => res.status(500).json(err))
     }
 
     const getID = (req, res) => {
-        app.db('test')
+        app.db('users')
             .where({ id: req.params.id })
             .orderBy('name')
-            .then(test => res.json(test))
+            .then(users => res.json(users))
             .catch(err => res.status(500).json(err))
     }
 
     const save = (req, res) => {
-        app.db('test')
+        app.db('users')
             .insert(req.body)
             .then(_ => res.status(200).json({
                 status: 200,
@@ -49,7 +49,7 @@ module.exports = app => {
     }
 
     const update = (req, res) => {
-        app.db('test')
+        app.db('users')
             .where({ id: req.params.id })
             .update(req.body)
             .then(_ => res.status(200).json({
@@ -65,7 +65,7 @@ module.exports = app => {
     }
 
     const remove = (req, res) => {
-        app.db('test')
+        app.db('users')
             .where({ id: req.params.id })
             .del()
             .then(rowsDeleted => {
