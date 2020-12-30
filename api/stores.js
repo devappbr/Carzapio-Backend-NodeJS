@@ -3,15 +3,17 @@ const moment = require('moment')
 module.exports = app => {
     const get = (req, res) => {
         app.db('stores')
-            .select('stores.name', 'stores.logo', 'stores.id', 'segments.name AS segmentName', 'categories.name AS categoriesName')
+            // .select('stores.name', 'stores.logo', 'stores.id', 'segments.name AS segmentName', 'categories.name AS categoriesName')
+            .select('stores.name', 'stores.logo', 'stores.id', 'segments.name AS segmentName')
+
             .innerJoin('segments')
-            .innerJoin('categories', 'categories.id', 'stores.id_categories')
+            // .innerJoin('categories', 'categories.id', 'stores.id_categories')
             .whereRaw('stores.id_segment = segments.id')
             // .andWhere('stores.id_categories', 'categories.id')
             .then(stores => res.json(stores))
             .catch(err => res.status(500).json({
                 status: 500,
-                success: false, 
+                success: false,
                 msg: err.sqlMessage
             }))
     }
