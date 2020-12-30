@@ -13,7 +13,11 @@ module.exports = app => {
 
             app.db('users')
                 .insert({ name: req.body.name, pass: password, cpf: req.body.cpf, email: req.body.email })
-                .then(_ => res.status(204).send())
+                .then(_ => res.status(200).json({
+                    status:200,
+                    success: true,
+                    msg: 'Usuário cadastrado com sucesso'
+                }))
                 .catch(err => res.status(400).json(err))
         })
     }
